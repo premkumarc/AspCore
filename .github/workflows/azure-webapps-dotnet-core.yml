@@ -26,9 +26,10 @@ env:
   SOLUTION : './Asp.netCoreWebApp.sln'
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
-  workflow_dispatch:
+
 
 permissions:
   contents: read
