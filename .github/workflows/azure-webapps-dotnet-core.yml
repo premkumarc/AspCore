@@ -34,4 +34,7 @@ jobs:
       - name: Build with dotnet
         run: dotnet build ${{env.Solution}} --configuration Release --no restore
 
+      - name: Publish
+        run: dotnet publish ${{env.Solution}} --configuration Release --no build
+
       
