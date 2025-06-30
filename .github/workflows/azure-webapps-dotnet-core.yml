@@ -8,8 +8,7 @@ env:
   Solution : ../../Asp.netCoreWebApp.sln
   package: ../../publish
 
-on:
-  workflow_dispatch:
+
 
 
 
