@@ -6,6 +6,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8'                 # set this to the .NET Core version to use
   Solution : ../../Asp.netCoreWebApp.sln
+  package: ../../publish
 
 on:
   workflow_dispatch:
@@ -35,6 +36,14 @@ jobs:
         run: dotnet build ${{env.Solution}} --configuration Release --no restore
 
       - name: Publish
-        run: dotnet publish ${{env.Solution}} --configuration Release --no build
+        run: dotnet publish ${{env.Solution}} --configuration Release --no build --output ${{env.package}}
+
+      - name: Deploy
+        uses: actions/webapps-deploy@v2
+        with:
+          app-name: 'AspnetCoreWebApp20250623202505'
+          publish-profile: ''
+          package: ${{env.package}}
+           
 
       
